@@ -1,0 +1,53 @@
+.btn-store
+    background-color: $color-purple
+    color: $color-white
+    font-family: $primary-font
+    display: inline-flex
+    align-items: center
+    text-decoration: none
+    padding: 10px 20px
+    border-radius: 100px
+    text-transform: uppercase
+    transition: 0.3s all ease-in-out
+
+    &:hover
+        background-color: #333333
+
+    svg
+        width: 25px
+        height: 25px
+        margin-right: 15px
+
+    &-text
+        display: flex
+        flex-direction: column
+
+    &-download
+        font-family: $primary-font
+        font-weight: 400
+        font-size: 12px
+
+    &-platform
+        font-family: $secundary-font
+        font-weight: 700
+        font-size: 13px
+
+.btn-cta
+    font-family: $secundary-font
+    font-size: 14px
+    color: $color-black-2
+    border: 2px solid $color-gray
+    padding: 10px 20px
+    border-radius: 100px
+    text-transform: uppercase
+    text-decoration: none
+    transition: 0.6s all ease-in-out
+
+    &:hover
+        color: $color-white
+        border: 2px solid $color-black-2
+        background-color: $color-black-2
+
+    @include respond-to(992px)
+        padding: 15px 30px
+

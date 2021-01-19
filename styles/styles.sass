@@ -1,0 +1,378 @@
+@import "./lib/variables"
+@import "./lib/mixins"
+@import "./base/buttons"
+@import "./base/wrapper"
+
+*
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+
+.header-fixed
+    position: fixed !important
+    background-color: $color-white !important
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 20px !important
+    
+
+    .hamburger
+        .hamburger-inner
+            background-color: #7e8085 !important
+
+            &::after,
+            &::before
+                background-color: #7e8085 !important
+
+.overlay
+    position: fixed
+    z-index: 200
+    left: 0
+    right: 0
+    top: 0
+    bottom: 0
+    background-color: rgba(255, 255, 255, 0.9)
+    display: none
+    transition: transformX(-100vw)
+
+.overlay-active
+    display: block
+    animation: overlay-animation
+    animation-duration: .5s
+    animation-timing-function: linear, ease-in-out
+
+.panel
+    position: fixed
+    z-index: 300
+    width: 320px
+    right: -320px
+    top: 0
+    bottom: 0
+    background-color: $color-white
+    box-shadow: 0 0.5rem 1.875rem rgba(0, 0, 0, 0.15)
+    padding-top: 30px
+    display: none
+    transition: .5s ease all
+
+    &__btn
+        cursor: pointer
+        position: absolute
+        right: 30px
+        top: 2px
+        padding: 10px
+        border: none
+        background-color: transparent
+
+        span:after,
+        span:before
+            border-radius: 1px
+            height: 3px
+            width: 20px
+            background: white
+            position: absolute
+            display: block
+            content: ''
+            background:#7e8085
+
+        span:before
+            top: 17px
+            transform: rotate(-45deg)
+
+        span:after
+            bottom: 0px
+            transform: rotate(45deg)
+
+        &:focus
+            outline: none
+
+    
+    &__nav
+
+
+    &__list
+        list-style: none
+        display: flex
+        flex-direction: column
+        align-items: center
+
+    &__item
+        border-bottom: 1px solid $color-gray-3
+        width: 100%
+
+    &__link
+        font-family: $primary-font
+        text-decoration: none
+        color: $color-gray-2
+        font-size: 14px
+        padding: 0 20px 
+        line-height: 45px
+
+.panel-active
+    display: block
+    right: 0
+
+.header
+    width: 100%
+    padding: 0 15px
+    transition: .3s ease-in all
+    position: absolute
+    z-index: 100
+    box-shadow: none
+
+    .container
+        margin: 0 auto
+        padding: 10px 0
+        max-width: 560px
+        display: flex
+        justify-content: space-between
+        align-items: center
+
+        @include respond-to(768px)
+            max-width: 720px
+
+        @include respond-to(992px)
+            max-width: 920px
+            padding: 15px 0
+
+        @include respond-to(1200px)
+            max-width: 1120px
+
+        .hamburger
+            .hamburger-inner
+                background-color: $color-white
+
+                &::after,
+                &::before
+                    background-color: $color-white
+
+            @include respond-to(992px)
+                display: none
+
+    &__logo
+        height: 55px
+
+    &__logo-color
+        display: none
+        height: 55px
+
+    &__nav
+        display: none
+
+        @include respond-to(992px)
+            display: block
+
+        .navbar
+            list-style: none
+            display: flex
+
+            &__item
+                margin-left: 40px
+
+            &__link
+                font-family: $primary-font
+                font-size: 14px
+                color: $color-white
+                text-decoration: none
+                transition: .3s ease-in all
+
+                &:hover
+                    color: rgba(255, 255 , 255, 0.75)
+
+
+.main
+    padding-top: 75px
+    background-image: url('../images/welcome-bg.jpg') 
+    background-repeat: no-repeat
+    background-position: center
+    background-size: cover
+    position: relative
+
+    .container
+        display: flex
+        flex-direction: column
+        position: relative
+        z-index: 10
+        padding-top: 30px
+
+        @include respond-to(768px)
+            flex-direction: row
+            align-items: center
+            padding-bottom: 60px
+
+    
+    &::after
+        position: absolute
+        content: ''
+        height: 100%
+        width: 100%
+        top: 0
+        z-index: 0
+        opacity: 0.9
+        background-image: linear-gradient(to right, rgba(32, 40, 119, 0.97), rgba(55, 46, 149, 0.97), rgba(83, 49, 177, 0.96), rgba(114, 48, 205, 0.96), rgba(150, 41, 230, 0.97))
+
+    &__title
+        font-family: $secundary-font
+        font-size: 32px
+        color: $color-white
+
+        @include respond-to(580px)
+            font-size: 40px
+
+        @include respond-to(992px)
+            font-size: 50px
+            line-height: 55px
+
+
+    &__description
+        font-family: $primary-font
+        font-size: 14px
+        line-height: 24px
+        color: $color-white
+        margin: 20px 0
+
+    &__buttons
+        margin-bottom: 10px
+
+    &__image
+        width: 100%
+        max-width: 380px
+        margin: 0 auto
+
+        @include respond-to(768px)
+            max-width: 270px
+            margin-left: 30px
+
+        @include respond-to(992px)
+            max-width: 380px
+            margin-left: 60px
+
+.features
+    padding: 90px 0
+    .content
+        display: grid
+        row-gap: 60px
+        grid-template-columns: repeat(1, 1fr)
+
+        @include respond-to(568px)
+            grid-template-columns: repeat(2, 1fr)
+
+        @include respond-to(992px)
+            grid-template-columns: repeat(4, 1fr)
+
+
+        .feature
+            display: flex
+            flex-direction: column
+            align-items: center
+            margin: 0 20px 
+            transition: .5s ease all
+            padding: 20px
+
+            @include respond-to(568px)
+                margin: 0 40px 
+
+            @include respond-to(992px)
+                margin: 0 30px 
+
+            &:hover
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2)
+                border-bottom: 2px solid $color-purple
+
+            &__icon
+                font-size: 63px
+                color: $color-black-2
+
+            &__title
+                font-family: $secundary-font
+                font-size: 18px
+                color: $color-black-1
+                margin: 10px 0
+                text-align: center
+
+                @include respond-to(768px)
+                    font-size: 20px
+
+            
+            &__description
+                font-family: $primary-font
+                font-size: 14px
+                color: $color-black-2
+                text-align: center
+
+
+.tools
+    background-color: $color-white-2
+    padding: 60px 0
+
+    @include respond-to(768px)
+        padding: 80px 0
+
+    @include respond-to(1200px)
+        padding: 110px 0
+
+    .container
+        display: flex
+
+    &__before-title
+        font-size: 14px
+        font-family: $secundary-font
+        font-weight: 700
+        color: $color-black-3
+        text-transform: uppercase
+
+    &__title
+        font-size: 28px
+        font-family: $secundary-font
+        font-weight: 700
+        color: $color-black-1
+        margin: 20px 0
+
+        @include respond-to(768px)
+            font-size: 38px
+
+        @include respond-to(992px)
+            font-size: 48px
+            line-height: 60px
+
+    &__list
+        list-style: none
+
+        &-item
+            font-size: 14px
+            font-family: $primary-font
+            font-weight: 400
+            color: $color-black-1
+            margin-bottom: 10px
+            position: relative
+            padding-left: 20px
+
+            &::before
+                position: absolute
+                content: ''
+                height: 5px
+                width: 5px
+                border: 2px solid $color-black-1
+                border-radius: 50%
+                top: 50%
+                left: 0
+                transform: translateY(-50%)
+
+            &:last-child
+                margin-bottom: 30px
+
+                @include respond-to(992px)
+                margin-bottom: 40px
+
+    &__image
+        display: none
+        width: 100%
+        max-width: 100%
+
+        @include respond-to(992px)
+            display: block
+            max-width: 300px
+            margin-left: 120px
+
+        @include respond-to(1200px)
+            display: block
+            max-width: 350px
+            margin-left: 200px
+
