@@ -130,7 +130,7 @@
 
         @include respond-to(992px)
             max-width: 920px
-            padding: 15px 0
+            padding: 15px
 
         @include respond-to(1200px)
             max-width: 1120px
@@ -184,18 +184,33 @@
     background-position: center
     background-size: cover
     position: relative
+    z-index: 1
 
     .container
         display: flex
         flex-direction: column
         position: relative
-        z-index: 10
+        z-index: 20
         padding-top: 30px
 
         @include respond-to(768px)
             flex-direction: row
             align-items: center
             padding-bottom: 60px
+
+    .shape
+        position: absolute
+        z-index: 10
+        bottom: -7px
+        left: 0
+        right: 0
+
+        @include respond-to(768px)
+            bottom: -10px
+
+        img
+            height: auto
+            max-width: 100%
 
     
     &::after
@@ -277,7 +292,7 @@
                 border-bottom: 2px solid $color-purple
 
             &__icon
-                font-size: 63px
+                width: 63px
                 color: $color-black-2
 
             &__title
